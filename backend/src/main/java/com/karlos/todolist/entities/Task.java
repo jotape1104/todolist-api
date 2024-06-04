@@ -1,10 +1,6 @@
 package com.karlos.todolist.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "tasks")
