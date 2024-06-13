@@ -3,6 +3,8 @@ package com.karlos.todolist.services;
 import com.karlos.todolist.entities.Task;
 import com.karlos.todolist.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +16,9 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
-    public Task createTask (Task task) {
-        return taskRepository.save(task);
+    public ResponseEntity<String> createTask (Task task) {
+        taskRepository.save(task);
+        return ResponseEntity.ok("Task created successfully!");
     }
 
     public List<Task> listAllTasks() {
@@ -28,21 +31,21 @@ public class TaskService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    public ResponseEntity<Task> updateTaskById (Task task, Long id) {
+    public ResponseEntity<String> updateTaskById (Task task, Long id) {
         return taskRepository.findById(id).map(taskToUpdate -> {
             taskToUpdate.setTaskName(task.getTaskName());
             taskToUpdate.setDescription(task.getDescription());
-            Task updated = taskRepository.save(taskToUpdate);
-            return ResponseEntity.ok().body(updated);
-        }).orElse(ResponseEntity.notFound().build());
+            taskRepository.save(taskToUpdate);
+            return ResponseEntity.ok("Task updated successfully!");
+        }).orElse(ResponseEntity.status(404).body("Task not found!"));
     }
 
-    public ResponseEntity<Object> deleteTaskById (Long id) {
+    public ResponseEntity<String> deleteTaskById (Long id) {
         return taskRepository.findById(id)
                 .map(taskToDelete -> {
                     taskRepository.deleteById(id);
-                    return ResponseEntity.noContent().build();
-                }).orElse(ResponseEntity.notFound().build());
+                    return ResponseEntity.ok("Task deleted successfully!");
+                }).orElse(ResponseEntity.status(404).body("Task not found!"));
     }
 
 }

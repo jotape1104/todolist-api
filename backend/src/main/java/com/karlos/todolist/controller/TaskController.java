@@ -16,7 +16,7 @@ public class TaskController {
     TaskService taskService;
 
     @PostMapping("/tasks")
-    public Task createdTask(@RequestBody Task task) {
+    public ResponseEntity<String> createTask(@RequestBody Task task) {
         return taskService.createTask(task);
     }
 
@@ -31,12 +31,12 @@ public class TaskController {
     }
 
     @PutMapping("/tasks/{id}")
-    public ResponseEntity<Task> updateTaskById(@PathVariable(value = "id") Long id, @RequestBody Task task) {
+    public ResponseEntity<String> updateTaskById(@PathVariable(value = "id") Long id, @RequestBody Task task) {
         return taskService.updateTaskById(task, id);
     }
 
     @DeleteMapping("/tasks/{id}")
-    public ResponseEntity<Object> deleteTaskById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<String> deleteTaskById(@PathVariable(value = "id") Long id) {
         return taskService.deleteTaskById(id);
     }
 
