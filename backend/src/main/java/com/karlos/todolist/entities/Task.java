@@ -8,12 +8,13 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String taskName;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String description;
 
-    public Task() {}
+    public Task() {
+    }
 
     public Task(String taskName, String description) {
         this.taskName = taskName;

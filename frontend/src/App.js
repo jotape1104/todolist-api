@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const Container = styled.div`
-  margin-top: 100px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,14 +19,14 @@ const Title = styled.h2``;
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [onEdit, setOnEdit] = useState([null]);
+  const [onEdit, setOnEdit] = useState(null);
 
   const getTasks = async () => {
     try{
       const res = await axios.get("http://localhost:8080/todolist/a3/tasks");
       setTasks(res.data.sort((a, b) => (a.taskName > b.taskName ? 1 : -1)));
     } catch (error) {
-      toast.error(error);
+      toast.error("Erro ao carregar tarefas!");
     }
   };
 

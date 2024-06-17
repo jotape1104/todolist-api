@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/todolist/a3")
@@ -26,19 +27,18 @@ public class TaskController {
     }
 
     @GetMapping("/tasks/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable(value = "id") Long id) {
-    return taskService.findTaskById(id);
+    public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
+        return taskService.findTaskById(id);
     }
 
     @PutMapping("/tasks/{id}")
-    public ResponseEntity<String> updateTaskById(@PathVariable(value = "id") Long id, @RequestBody Task task) {
+    public ResponseEntity<String> updateTaskById(@PathVariable Long id, @RequestBody Task task) {
         return taskService.updateTaskById(task, id);
     }
 
     @DeleteMapping("/tasks/{id}")
-    public ResponseEntity<String> deleteTaskById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<String> deleteTaskById(@PathVariable Long id) {
         return taskService.deleteTaskById(id);
     }
 
 }
-
