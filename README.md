@@ -40,10 +40,12 @@ Além disso, o projeto inclui uma robusta suíte de testes unitários para garan
 ### back-end:
 1. Clone o repositório: ``git clone https://github.com/KarlosEKaminski/todolist-api.git``
 2. Abra o arquivo **_application.properties_** em: ``backend\src\main\resources``
-3. Altere as linhas 4 e 5 do arquivo inserindo o usuário e senha do banco de dados
-4. Certifique-se de ter criado um schema com o nome de "todo_list" no MySQL
-5. Navegue até o caminho: ``backend\src\main\java\com\karlos\todolist``
-6. E execute o arquivo **_TodolistApplication.java_** via terminal ou utilizando uma IDE
+3. Altere o código ``spring.profiles.active=${APP_PROFILE:test}`` para ``spring.profiles.active=${APP_PROFILE:dev}``
+4. Abra o arquivo **_application-dev.properties_** em: ``backend\src\main\resources``
+5. Altere as linhas 4 e 5 do arquivo inserindo o usuário e senha do banco de dados
+6. Certifique-se de ter criado um schema com o nome de "todo_list" no MySQL
+7. Navegue até o caminho: ``backend\src\main\java\com\karlos\todolist``
+8. E execute o arquivo **_TodolistApplication.java_** via terminal ou utilizando uma IDE
 <hr>
 
 ### front-end
