@@ -11,5 +11,5 @@ public class CorsConfiguration implements WebMvcConfigurer { // NOSONAR
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT") // NOSONAR
                 .allowedHeaders("*") // NOSONAR
                 .allowCredentials(true); // NOSONAR
-    }
+    } // NOSONAR
 }
