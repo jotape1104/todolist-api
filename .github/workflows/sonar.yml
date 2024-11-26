@@ -36,6 +36,6 @@ jobs:
       
       - name: Build and analyze
         env:
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn clean install -f backend/pom.xml
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=KarlosEKaminski_todolist-api -f backend/pom.xml
