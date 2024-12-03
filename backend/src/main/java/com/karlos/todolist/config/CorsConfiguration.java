@@ -3,13 +3,13 @@ package com.karlos.todolist.config;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-public class CorsConfiguration implements WebMvcConfigurer { // NOSONAR
+public class CorsConfiguration implements WebMvcConfigurer { 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // NOSONAR
-                .allowedOrigins("*") // NOSONAR
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT") // NOSONAR
-                .allowedHeaders("*") // NOSONAR
-                .allowCredentials(true); // NOSONAR
-    } // NOSONAR
+        registry.addMapping("/**") 
+                .allowedOrigins("*") 
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "TRACE", "CONNECT") 
+                .allowedHeaders("*") 
+                .allowCredentials(true); 
+    }
 }
