@@ -22,7 +22,7 @@ function App() {
   const [onEdit, setOnEdit] = useState(null);
 
   const getTasks = async () => {
-    try{
+    try {
       const res = await axios.get("http://localhost:8080/todolist/a3/tasks");
       setTasks(res.data.sort((a, b) => (a.taskName > b.taskName ? 1 : -1)));
     } catch (error) {
@@ -37,14 +37,14 @@ function App() {
   return (
     <>
       <Container>
-        <Title></Title>
+        <Title>Lista de Tarefas</Title>
         <Form onEdit={onEdit} setOnEdit={setOnEdit} getTasks={getTasks} />
         <Grid tasks={tasks} setTasks={setTasks} setOnEdit={setOnEdit} />
       </Container>
-      <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
+      <ToastContainer autoClose={3000} position="bottom-left" />
       <GlobalStyle />
     </>
   );
-};
+}
 
 export default App;
